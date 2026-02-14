@@ -1,0 +1,1 @@
+Explore this from a few different angles: One teammate on UX, One on technical architecture, and one playing devil's advocate, and one running as a documentation researcher.
