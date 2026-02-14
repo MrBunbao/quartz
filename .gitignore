@@ -1,11 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+public/
+
+# Obsidian artifacts (defense in depth)
+.obsidian/
+.trash/
+
+# Environment and secrets
+.env
+.env.*
+
+# OS artifacts
 .DS_Store
-.gitignore
-node_modules
-public
-prof
-tsconfig.tsbuildinfo
-.obsidian
+Thumbs.db
+
+# Editor configs
+*.swp
+*.swo
+*~
+
+# Quartz cache
 .quartz-cache
-private/
-.replit
-replit.nix
+tsconfig.tsbuildinfo

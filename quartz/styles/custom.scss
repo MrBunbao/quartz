@@ -91,3 +91,130 @@ body .page article {
     margin-bottom: 0;
   }
 }
+
+// ============================================================
+// CRT effects — reduce theme defaults to ~50% intensity
+// ============================================================
+
+// Scanlines: halve the dark-line opacity and RGB subpixel tint
+body::before {
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    ) !important;
+}
+
+// Flicker: slow the animation and cap peak opacity at ~50%
+body::after {
+  animation: flickerReduced 0.3s infinite !important;
+}
+@keyframes flickerReduced {
+  0%   { opacity: 0.14; }
+  5%   { opacity: 0.17; }
+  10%  { opacity: 0.12; }
+  15%  { opacity: 0.45; }
+  20%  { opacity: 0.09; }
+  25%  { opacity: 0.42; }
+  30%  { opacity: 0.33; }
+  35%  { opacity: 0.34; }
+  40%  { opacity: 0.13; }
+  45%  { opacity: 0.42; }
+  50%  { opacity: 0.48; }
+  55%  { opacity: 0.04; }
+  60%  { opacity: 0.10; }
+  65%  { opacity: 0.36; }
+  70%  { opacity: 0.27; }
+  75%  { opacity: 0.19; }
+  80%  { opacity: 0.36; }
+  85%  { opacity: 0.35; }
+  90%  { opacity: 0.35; }
+  95%  { opacity: 0.18; }
+  100% { opacity: 0.12; }
+}
+
+// Chromatic aberration: halve the color-fringe alpha, blur, and jitter offset
+body {
+  text-shadow:
+    0.04px 0 0.5px rgba(0, 30, 255, 0.25),
+    -0.04px 0 0.5px rgba(255, 0, 80, 0.15),
+    0 0 1.5px !important;
+  animation: textShadowReduced 1.6s infinite !important;
+}
+
+// Halved textShadow animation — offsets reduced ~50%, alpha halved
+@keyframes textShadowReduced {
+  0% {
+    text-shadow: 0.22px 0 0.5px rgba(0,30,255,0.25), -0.22px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  5% {
+    text-shadow: 1.40px 0 0.5px rgba(0,30,255,0.25), -1.40px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  10% {
+    text-shadow: 0.01px 0 0.5px rgba(0,30,255,0.25), -0.01px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  15% {
+    text-shadow: 0.20px 0 0.5px rgba(0,30,255,0.25), -0.20px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  20% {
+    text-shadow: 1.74px 0 0.5px rgba(0,30,255,0.25), -1.74px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  25% {
+    text-shadow: 0.81px 0 0.5px rgba(0,30,255,0.25), -0.81px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  30% {
+    text-shadow: 0.35px 0 0.5px rgba(0,30,255,0.25), -0.35px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  35% {
+    text-shadow: 1.95px 0 0.5px rgba(0,30,255,0.25), -1.95px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  40% {
+    text-shadow: 1.94px 0 0.5px rgba(0,30,255,0.25), -1.94px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  45% {
+    text-shadow: 1.12px 0 0.5px rgba(0,30,255,0.25), -1.12px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  50% {
+    text-shadow: 0.04px 0 0.5px rgba(0,30,255,0.25), -0.04px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  55% {
+    text-shadow: 1.19px 0 0.5px rgba(0,30,255,0.25), -1.19px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  60% {
+    text-shadow: 1.10px 0 0.5px rgba(0,30,255,0.25), -1.10px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  65% {
+    text-shadow: 1.43px 0 0.5px rgba(0,30,255,0.25), -1.43px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  70% {
+    text-shadow: 0.24px 0 0.5px rgba(0,30,255,0.25), -0.24px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  75% {
+    text-shadow: 0.95px 0 0.5px rgba(0,30,255,0.25), -0.95px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  80% {
+    text-shadow: 0.04px 0 0.5px rgba(0,30,255,0.25), -0.04px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  85% {
+    text-shadow: 0.05px 0 0.5px rgba(0,30,255,0.25), -0.05px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  90% {
+    text-shadow: 1.72px 0 0.5px rgba(0,30,255,0.25), -1.72px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  95% {
+    text-shadow: 1.09px 0 0.5px rgba(0,30,255,0.25), -1.09px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+  100% {
+    text-shadow: 1.31px 0 0.5px rgba(0,30,255,0.25), -1.31px 0 0.5px rgba(255,0,80,0.15), 0 0 1.5px;
+  }
+}
+
+// SVG/HR drop-shadow: halve the chromatic aberration on non-text elements
+body svg,
+body hr {
+  filter: none !important;
+  animation: none !important;
+}
