@@ -2,53 +2,62 @@ import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
+ * Quartz 4 configuration for wiki.andydao.dev
+ * Theme: 80s Neon (https://github.com/saberzero1/quartz-themes/tree/master/themes/80s-neon)
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "Andy's Wiki",
+    pageTitleSuffix: " | wiki.andydao.dev",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
+    analytics: null,
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "wiki.andydao.dev",
+    ignorePatterns: [
+      ".obsidian",
+      ".trash",
+      "private",
+      "_private",
+      "_drafts",
+      "helpers/prompts",
+      "api-keys",
+      ".DS_Store",
+      "*.canvas",
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Space Grotesk",
+        body: "Inter",
+        code: "JetBrains Mono",
       },
       colors: {
+        // 80s Neon palette (dark-only design)
+        // Source: https://github.com/saberzero1/quartz-themes/tree/master/themes/80s-neon
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#2b213a",           // --background-primary (deep purple)
+          lightgray: "#1a1836",       // --background-secondary (darker purple)
+          gray: "#bd93f9",            // --text-faint (purple accents)
+          darkgray: "#d4f5ff",        // --text-normal (cyan text)
+          dark: "#d4f5ff",            // headings
+          secondary: "#ff1690",       // --link-color (neon pink)
+          tertiary: "#7a6ae6",        // --link-color-hover (purple)
+          highlight: "rgba(138, 92, 245, 0.10)",
+          textHighlight: "rgba(255, 211, 25, 0.20)",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#2b213a",           // --background-primary (deep purple)
+          lightgray: "#1a1836",       // --background-secondary (darker purple)
+          gray: "#bd93f9",            // --text-faint (purple accents)
+          darkgray: "#d4f5ff",        // --text-normal (cyan text)
+          dark: "#d4f5ff",            // headings
+          secondary: "#ff1690",       // --link-color (neon pink)
+          tertiary: "#7a6ae6",        // --link-color-hover (purple)
+          highlight: "rgba(138, 92, 245, 0.10)",
+          textHighlight: "rgba(255, 211, 25, 0.20)",
         },
       },
     },
@@ -57,23 +66,28 @@ const config: QuartzConfig = {
     transformers: [
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
+        priority: ["frontmatter", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "github-light",
-          dark: "github-dark",
+          light: "one-dark-pro",
+          dark: "one-dark-pro",
         },
-        keepBackground: false,
       }),
-      Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
+      Plugin.ObsidianFlavoredMarkdown({
+        enableInHtmlEmbed: false,
+      }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
+      Plugin.CrawlLinks({
+        markdownLinkResolution: "shortest",
+      }),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [
+      Plugin.RemoveDrafts(),
+    ],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
@@ -88,8 +102,6 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
     ],
   },
 }
